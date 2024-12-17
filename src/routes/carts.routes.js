@@ -69,10 +69,11 @@ cartRoutes.post("/:cid/product/:pid", async (req, res) => {
     if (!prodExist) {
         return res.status(404).send({ status: "Error", message: "Producto no encontrado" });
     }
-    
+
     selectedCart.products.push({prodId});
     const isOk = await saveCarts(carts);
   if (!isOk) {
+
     return res.send({ status: "Error", message: "No se pudo guardar el carrito" });
   }
   res.send({selectedCart});
